@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lab_2.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,43 @@ namespace lab_2
     /// </summary>
     public partial class MainWindow : Window
     {
+        EncryptVM VM = new EncryptVM();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void DoEncoding()
+        {
+            string text = string.Empty;
+            string key = string.Empty;
+            tb_cipher_text.Text = VM.EncryptText(out text, out key, tb_plain_text.Text, tb_key.Text);
+            tb_plain_text.Text = text;
+            tb_key.Text = key;
+            tb_key.CaretIndex = tb_key.Text.Length;
+            tb_plain_text.CaretIndex = tb_plain_text.Text.Length;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            DoEncoding();
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (rb_eng.IsChecked.Value)
+                Properties.Settings.Default.Language = "eng";
+            else if(rb_rus.IsChecked.Value)
+                Properties.Settings.Default.Language = "rus";
+            if (rb_atbash.IsChecked.Value)
+                Properties.Settings.Default.Сipher = "atbash";
+            else if(rb_vigenere.IsChecked.Value)
+                Properties.Settings.Default.Сipher = "vigenere";
+
+            Properties.Settings.Default.Save();
+
+            DoEncoding();
         }
     }
 }

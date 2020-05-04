@@ -8,20 +8,25 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
-        <TextBox Margin="10,10,474,175"/>
-        <TextBox IsReadOnly="True" Margin="470,10,10,175" Text="cdcdcdfcdf"/>
+        <TextBox x:Name="tb_plain_text" Margin="10,10,474,175" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="tb_cipher_text" IsReadOnly="True" Margin="470,10,10,175"/>
         <Grid x:Name="g_control" Margin="10,263,474,37" Background="Cyan">
-            <Border BorderBrush="Black" BorderThickness="1"/>
+            <Border BorderBrush="Black" BorderThickness="1">
+            </Border>
             <Grid>
-                <RadioButton Content="Rus" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,30,0,0"/>
-                <RadioButton Content="Eng" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                <RadioButton x:Name="rb_rus" Content="Rus" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,30,0,0"/>
+                <RadioButton x:Name="rb_eng" Content="Eng" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
             </Grid>
             <Grid>
-                <RadioButton Content="Vigenere" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,94,0,0"/>
-                <RadioButton Content="Atbash" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,74,0,0"/>
+                <RadioButton x:Name="rb_vigenere" Content="Vigenere" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,94,0,0"/>
+                <RadioButton x:Name="rb_atbash" Content="Atbash" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,74,0,0"/>
             </Grid>
-            <TextBox TextWrapping="Wrap" Text="Key" Margin="0,0,10,10" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120"/>
-
+            <Grid>
+                <RadioButton Content="Encode" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,10,0,0"/>
+                <RadioButton Content="Decode" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,30,0,0"/>
+            </Grid>
+            <TextBox x:Name="tb_key" TextWrapping="Wrap" Text="Key" Margin="0,0,10,79" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" FontSize="16"/>
+            <Button Content="Apply" Margin="0,0,10,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" Click="ApplyButton_Click"/>
         </Grid>
 
     </Grid>

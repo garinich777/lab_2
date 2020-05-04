@@ -16,8 +16,8 @@ namespace lab_2.Model
                 letters = eng_letters;
 
             int LettersLength = letters.Length;
-            text = text.ToUpper();
-            Keyword = Keyword.ToUpper();
+            text = text.ToLower();
+            Keyword = Keyword.ToLower();
 
             string ResultedText = string.Empty;
 

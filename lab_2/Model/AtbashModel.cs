@@ -2,18 +2,12 @@
 
 namespace lab_2.Model
 {
-    public class Atbash : ICipherModel
+    public class AtbashModel : ICipherModel
     {
         string rus_letters = Letters.RussianLetters;
         string eng_letters = Letters.EnglishLetters;
-        string rev_rus_letters = string.Empty;
-        string rev_eng_letters = string.Empty;
-
-        Atbash()
-        {
-            string rev_rus_letters = new string(rus_letters.Reverse().ToArray());
-            string rev_eng_letters = new string(eng_letters.Reverse().ToArray());
-        }
+        string rev_rus_letters = new string(Letters.RussianLetters.Reverse().ToArray());
+        string rev_eng_letters = new string(Letters.EnglishLetters.Reverse().ToArray());
 
         private string EncodeOrDecode(string text, string letters, string сipher)
         {
@@ -29,7 +23,7 @@ namespace lab_2.Model
                     result_text += text[i];
 
                 else if (index >= 0)
-                    result_text += сipher[index].ToString();
+                   result_text += сipher[index].ToString();
             }
 
             return result_text;
