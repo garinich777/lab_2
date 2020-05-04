@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace lab_2.Model
 {
     public class Atbash : ICipherModel
     {
-        string rus_letters;
-        string eng_letters;
-        string rev_rus_letters;
-        string rev_eng_letters;
+        string rus_letters = Letters.RussianLetters;
+        string eng_letters = Letters.EnglishLetters;
+        string rev_rus_letters = string.Empty;
+        string rev_eng_letters = string.Empty;
 
         Atbash()
         {
-            string rus_letters = Letters.rus_letters;
-            string eng_letters = Letters.eng_letters;
             string rev_rus_letters = new string(rus_letters.Reverse().ToArray());
             string rev_eng_letters = new string(eng_letters.Reverse().ToArray());
         }

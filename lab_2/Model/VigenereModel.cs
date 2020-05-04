@@ -1,66 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lab_2.Model
 {
     class VigenereModel : ICipherModel
     {
-        char[] RussianLetters = new char[] { 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И',
-                                             'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С',
-                                             'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ь', 'Ы', 'Ъ',
-                                             'Э', 'Ю', 'Я' };
-        char[] EnglishLetters = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-                                             'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-                                             'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-        char[] Letters;
+        string rus_letters = Letters.RussianLetters;
+        string eng_letters = Letters.EnglishLetters;
+        string letters;
 
-        public string Encode(string Text, string Keyword)
+        public string Encode(string text, string Keyword)
         {
-            if (Properties.Settings.Default.Language == "Russian")
-                Letters = RussianLetters;
-            else
-                Letters = EnglishLetters;
-            int LettersLength = Letters.Length;
-            Text = Text.ToUpper();
+            if (Properties.Settings.Default.Language == "rus")
+                letters = rus_letters;
+            else if (Properties.Settings.Default.Language == "eng")
+                letters = eng_letters;
+
+            int LettersLength = letters.Length;
+            text = text.ToUpper();
             Keyword = Keyword.ToUpper();
 
-            string ResultedText = "";
+            string ResultedText = string.Empty;
 
-            int KeywordIndex = 0;
-
-
-            foreach (char Symbol in Text)
+            int index = 0;
+            foreach (char el in text)
             {
-
-                if (!char.IsLetter(Symbol))
+                if (!char.IsLetter(el))
                 {
-                    ResultedText += Symbol;
+                    ResultedText += el;
                     continue;
                 }
 
-                int CurrentCharacter = (Array.IndexOf(Letters, Symbol) +
-                    Array.IndexOf(Letters, Keyword[KeywordIndex])) % LettersLength;
+                int сurrent_сharacter = (Array.IndexOf(letters.ToCharArray(), el) +
+                    Array.IndexOf(letters.ToCharArray(), Keyword[index])) % LettersLength;
 
-                ResultedText += Letters[CurrentCharacter];
+                ResultedText += letters[сurrent_сharacter];
 
-                if ((KeywordIndex + 1) == Keyword.Length)
-                    KeywordIndex = 0;
+                if ((index + 1) == Keyword.Length)
+                    index = 0;
                 else
-                    KeywordIndex++;
+                    index++;
             }
 
             return ResultedText;
         }
         public string Decode(string Text, string Keyword)
         {
-            if (Properties.Settings.Default.Language == "Russian")
-                Letters = RussianLetters;
-            else
-                Letters = EnglishLetters;
-            int LettersLength = Letters.Length;
+            if (Properties.Settings.Default.Language == "rus")
+                letters = rus_letters;
+            else if (Properties.Settings.Default.Language == "eng")
+                letters = eng_letters;
+
+            int LettersLength = letters.Length;
             Text = Text.ToUpper();
             Keyword = Keyword.ToUpper();
 
@@ -75,10 +65,10 @@ namespace lab_2.Model
                     ResultedText += Symbol;
                     continue;
                 }
-                int CurrentCharacter = (Array.IndexOf(Letters, Symbol) + LettersLength -
-                    Array.IndexOf(Letters, Keyword[KeywordIndex])) % LettersLength;
+                int CurrentCharacter = (Array.IndexOf(letters.ToCharArray(), Symbol) + LettersLength -
+                    Array.IndexOf(letters.ToCharArray(), Keyword[KeywordIndex])) % LettersLength;
 
-                ResultedText += Letters[CurrentCharacter];
+                ResultedText += letters[CurrentCharacter];
 
                 if ((KeywordIndex + 1) == Keyword.Length)
                     KeywordIndex = 0;

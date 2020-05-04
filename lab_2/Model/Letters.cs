@@ -8,7 +8,7 @@ namespace lab_2.Model
 {
     static class Letters
     {
-        public static string rus_letters { get { return "абвгдеёжзийклмнопрстуфхцчшщьъэюя"; } }
-        public static string eng_letters { get { return "abcdefghijklmnopqrstuvwxyz"; } }
+        public static string RussianLetters { get { return "абвгдеёжзийклмнопрстуфхцчшщьъэюя"; } }
+        public static string EnglishLetters { get { return "abcdefghijklmnopqrstuvwxyz"; } }
     }
 }
