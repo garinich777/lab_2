@@ -21,18 +21,24 @@ namespace lab_2
     /// </summary>
     public partial class MainWindow : Window
     {
-        EncryptVM VM = new EncryptVM();
+        CryptVM VM = new CryptVM();
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void DoEncoding()
+        private void DoCoding()
         {
             string text = string.Empty;
             string key = string.Empty;
-            tb_cipher_text.Text = VM.EncryptText(out text, out key, tb_plain_text.Text, tb_key.Text);
+            
+
+            if (rb_encode.IsChecked.Value)
+                tb_cipher_text.Text = VM.EncryptText(out text, out key, tb_plain_text.Text, tb_key.Text);
+            else
+                tb_cipher_text.Text = VM.DecryptText(out text, out key, tb_plain_text.Text, tb_key.Text);
+
             tb_plain_text.Text = text;
             tb_key.Text = key;
             tb_key.CaretIndex = tb_key.Text.Length;
@@ -41,7 +47,7 @@ namespace lab_2
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            DoEncoding();
+            DoCoding();
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
@@ -50,6 +56,7 @@ namespace lab_2
                 Properties.Settings.Default.Language = "eng";
             else if(rb_rus.IsChecked.Value)
                 Properties.Settings.Default.Language = "rus";
+
             if (rb_atbash.IsChecked.Value)
                 Properties.Settings.Default.Сipher = "atbash";
             else if(rb_vigenere.IsChecked.Value)
@@ -57,7 +64,7 @@ namespace lab_2
 
             Properties.Settings.Default.Save();
 
-            DoEncoding();
+            DoCoding();
         }
     }
 }

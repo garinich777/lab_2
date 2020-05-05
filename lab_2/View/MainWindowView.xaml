@@ -22,8 +22,8 @@
                 <RadioButton x:Name="rb_atbash" Content="Atbash" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,74,0,0"/>
             </Grid>
             <Grid>
-                <RadioButton Content="Encode" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,10,0,0"/>
-                <RadioButton Content="Decode" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,30,0,0"/>
+                <RadioButton x:Name="rb_encode" Content="Encode" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,10,0,0"/>
+                <RadioButton x:Name="rb_decode" Content="Decode" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,30,0,0"/>
             </Grid>
             <TextBox x:Name="tb_key" TextWrapping="Wrap" Text="Key" Margin="0,0,10,79" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" FontSize="16"/>
             <Button Content="Apply" Margin="0,0,10,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" Click="ApplyButton_Click"/>

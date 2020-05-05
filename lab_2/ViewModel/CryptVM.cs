@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace lab_2.ViewModel
 {
-    class EncryptVM
+    class CryptVM
     {
         ICipherModel coder = new AtbashModel();
 
@@ -38,6 +38,18 @@ namespace lab_2.ViewModel
             else if (Properties.Settings.Default.Сipher == "vigenere")
                 coder = new VigenereModel();
             return coder.Encode(new_text, new_key);
+        }
+
+        public string DecryptText(out string new_text, out string new_key, string text, string key)
+        {
+            new_text = TrueLettersOnle(text);
+            new_key = TrueLettersOnle(key);
+
+            if (Properties.Settings.Default.Сipher == "atbash")
+                coder = new AtbashModel();
+            else if (Properties.Settings.Default.Сipher == "vigenere")
+                coder = new VigenereModel();
+            return coder.Decode(new_text, new_key);
         }
     }
 }
