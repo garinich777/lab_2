@@ -51,5 +51,6 @@ namespace lab_2.ViewModel
                 coder = new VigenereModel();
             return coder.Decode(new_text, new_key);
         }
+
     }
 }
