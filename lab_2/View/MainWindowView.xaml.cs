@@ -4,7 +4,8 @@ using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.IO;
 using System.Windows.Forms;
-
+using MessageBox = System.Windows.Forms.MessageBox;
+using Path = System.IO.Path;
 
 namespace lab_2
 {
@@ -71,7 +72,7 @@ namespace lab_2
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     file_path = openFileDialog.FileName;
-                    file_name = System.IO.Path.GetFileName(file_path);
+                    file_name = Path.GetFileName(file_path);
                 }
             }
 
@@ -87,13 +88,48 @@ namespace lab_2
                 }
                    
                 else
-                    System.Windows.Forms.MessageBox.Show($"Файл \"{file_name}\" не содержит исходный текст");
+                    MessageBox.Show($"Файл \"{file_name}\" не содержит исходный текст");
             }
-            
+        }
 
+        private void WriteText(bool full_write)
+        {
+            string file_path = string.Empty;
+            string file_name = string.Empty;
+            if (tb_plain_text.Text == string.Empty)
+            {
+                MessageBox.Show("Записать пустоту? Я не умею");
+                return;
+            }
+            using (SaveFileDialog saveFileDialog1 = new SaveFileDialog())
+            {
+                saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                saveFileDialog1.FilterIndex = 1;
+                saveFileDialog1.RestoreDirectory = true;
 
-           
-            
+                if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (!string.IsNullOrEmpty(file_path = saveFileDialog1.FileName))
+                    {
+                        file_name = Path.GetFileName(file_path);
+                        if(full_write)
+                            VM.WriteFile(file_path, tb_cipher_text.Text, tb_plain_text.Text);
+                        else
+                            VM.WriteFile(file_path, tb_cipher_text.Text);
+                        MessageBox.Show($"Файл \"{file_name}\" успешно записан", file_name);
+                    }
+                }
+            }
+        }
+
+        private void WriteSourceAndCiphertextTextClick(object sender, RoutedEventArgs e)
+        {
+            WriteText(true);
+        }
+
+        private void WriteSourceTextClick(object sender, RoutedEventArgs e)
+        {
+            WriteText(false);
         }
     }
 }

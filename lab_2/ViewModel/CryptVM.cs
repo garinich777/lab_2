@@ -52,6 +52,9 @@ namespace lab_2.ViewModel
             return coder.Decode(new_text, new_key);
         }
 
-        public bool ReadFile(string path, out string ciphertext, out string sourcetext) => FileModel.TryReadArray(path, out ciphertext, out sourcetext); 
+        public bool ReadFile(string path, out string ciphertext, out string sourcetext) => FileModel.TryReadArray(path, out ciphertext, out sourcetext);
+
+        public void WriteFile(string path, string ciphertext, string sourcetext) => FileModel.WriteFile(path, ciphertext, sourcetext);
+        public void WriteFile(string path, string ciphertext) => FileModel.WriteFile(path, ciphertext);
     }
 }
