@@ -65,6 +65,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\FileModel.cs" />
+    <Compile Include="Model\HelloModel.cs" />
     <Compile Include="ViewModel\CryptVM.cs" />
     <Compile Include="View\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>

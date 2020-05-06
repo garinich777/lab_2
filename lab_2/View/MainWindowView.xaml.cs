@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Path = System.IO.Path;
+using System;
 
 namespace lab_2
 {
@@ -130,6 +131,23 @@ namespace lab_2
         private void WriteSourceTextClick(object sender, RoutedEventArgs e)
         {
             WriteText(false);
+        }
+
+        private void HelloMessageShow(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.HelloShow)
+            {
+                var result = MessageBox.Show(VM.HelloMessage() + Environment.NewLine + "Показывать это окно в дальнейшем?", "О программе", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                Properties.Settings.Default.HelloShow = result == System.Windows.Forms.DialogResult.Yes;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void HelloWindow(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show(VM.HelloMessage() + Environment.NewLine + "Показывать это окно в дальнейшем?", "О программе", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            Properties.Settings.Default.HelloShow = result == System.Windows.Forms.DialogResult.Yes;
+            Properties.Settings.Default.Save();
         }
     }
 }

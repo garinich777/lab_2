@@ -46,5 +46,17 @@ namespace lab_2.Properties {
                 this["Сipher"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HelloShow {
+            get {
+                return ((bool)(this["HelloShow"]));
+            }
+            set {
+                this["HelloShow"] = value;
+            }
+        }
     }
 }

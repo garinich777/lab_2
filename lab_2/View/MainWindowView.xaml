@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab_2"
         mc:Ignorable="d"
-        Title="MainWindow" WindowStartupLocation="CenterScreen" Height="420" Width="800" MinHeight="420" MinWidth="800">
+        Title="MainWindow" WindowStartupLocation="CenterScreen" Height="420" Width="800" MinHeight="420" MinWidth="800" Loaded="HelloMessageShow">
 
 
     <Grid Background="#725186">
@@ -40,6 +40,7 @@
                 </MenuItem>
                 <MenuItem Header="Загрузить" Click="ReadFileClick"/>
             </MenuItem>
+            <MenuItem Header="О программе" Click="HelloWindow"/>
         </Menu>
         
     </Grid>
