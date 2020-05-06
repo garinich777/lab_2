@@ -26,17 +26,19 @@ namespace lab_2.Model
                 writer.Write(content);
         }
 
-        public static bool TryReadArray(string path, out string ciphertext, out string sourcetext)
+        public static bool TryReadArray(string path, out string cipher_text, out string source_text)
         {
             string file_content;
             using (StreamReader reader = new StreamReader(path))
                 file_content = reader.ReadToEnd();
 
-            Match match = Regex.Match(file_content, "<ciphertext>(.*?)</ciphertext>(.*?)<sourcetext>(.*?)</sourcetext>");
+            Match cipher_text_match = Regex.Match(file_content, "<ciphertext>(.*?)</ciphertext>"); 
+            Match source_text_match = Regex.Match(file_content, "<sourcetext>(.*?)</sourcetext>");
 
-            ciphertext = match.Groups[1].Value;
-            sourcetext = match.Groups[3].Value;
-            return true;
+            cipher_text = cipher_text_match.Groups[1].Value;
+            source_text = source_text_match.Groups[1].Value;
+
+            return source_text != string.Empty;
         }
     }
 }

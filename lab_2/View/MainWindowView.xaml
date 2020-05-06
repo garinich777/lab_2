@@ -38,7 +38,7 @@
                     <MenuItem Header="Обработаный текст"/>
                     <MenuItem Header="Обработаный и исходный текст"/>
                 </MenuItem>
-                <MenuItem Header="Загрузить"/>
+                <MenuItem Header="Загрузить" Click="ReadFileClick"/>
             </MenuItem>
 
 
