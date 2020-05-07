@@ -39,23 +39,6 @@ namespace lab_2
             DoCoding();
         }
 
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (rb_eng.IsChecked.Value)
-                Properties.Settings.Default.Language = "eng";
-            else if(rb_rus.IsChecked.Value)
-                Properties.Settings.Default.Language = "rus";
-
-            if (rb_atbash.IsChecked.Value)
-                Properties.Settings.Default.Сipher = "atbash";
-            else if(rb_vigenere.IsChecked.Value)
-                Properties.Settings.Default.Сipher = "vigenere";
-
-            Properties.Settings.Default.Save();
-
-            DoCoding();
-        }
-
         private void ReadFileClick(object sender, RoutedEventArgs e)
         {
             string file_path = string.Empty;
@@ -146,6 +129,62 @@ namespace lab_2
             var result = MessageBox.Show(VM.HelloMessage() + Environment.NewLine + "Показывать это окно в дальнейшем?", "О программе", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             Properties.Settings.Default.HelloShow = result == System.Windows.Forms.DialogResult.Yes;
             Properties.Settings.Default.Save();
+        }
+
+        private void ApplySettings()
+        {
+            if (rb_atbash == null || rb_encode == null || tb_cipher_text == null || tb_key == null)
+                return;
+
+            if (rb_eng.IsChecked.Value)
+                Properties.Settings.Default.Language = "eng";
+            else if (rb_rus.IsChecked.Value)
+                Properties.Settings.Default.Language = "rus";
+
+            if (rb_atbash.IsChecked.Value)
+                Properties.Settings.Default.Сipher = "atbash";
+            else if (rb_vigenere.IsChecked.Value)
+                Properties.Settings.Default.Сipher = "vigenere";
+
+            Properties.Settings.Default.Save();
+
+            DoCoding();
+        }
+
+
+        private void tb_key_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ApplySettings();
+        }
+
+        private void rb_rus_Checked(object sender, RoutedEventArgs e)
+        {
+            ApplySettings();
+        }
+
+        private void rb_eng_Checked(object sender, RoutedEventArgs e)
+        {
+            ApplySettings();
+        }
+
+        private void rb_vigenere_Checked(object sender, RoutedEventArgs e)
+        {
+            ApplySettings();
+        }
+
+        private void rb_atbash_Checked(object sender, RoutedEventArgs e)
+        {
+            ApplySettings();
+        }
+
+        private void rb_encode_Checked(object sender, RoutedEventArgs e)
+        {
+            ApplySettings();
+        }
+
+        private void rb_decode_Checked(object sender, RoutedEventArgs e)
+        {
+            ApplySettings();
         }
     }
 }

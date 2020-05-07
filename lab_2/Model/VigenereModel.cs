@@ -2,7 +2,7 @@
 
 namespace lab_2.Model
 {
-    class VigenereModel : ICipherModel
+    public class VigenereModel : ICipherModel
     {
         string rus_letters = Letters.RussianLetters;
         string eng_letters = Letters.EnglishLetters;
@@ -10,6 +10,9 @@ namespace lab_2.Model
 
         public string Encode(string text, string Keyword)
         {
+            if (Keyword == string.Empty)
+                return string.Empty;
+             
             if (Properties.Settings.Default.Language == "rus")
                 letters = rus_letters;
             else if (Properties.Settings.Default.Language == "eng")

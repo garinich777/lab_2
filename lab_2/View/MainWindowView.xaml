@@ -9,25 +9,24 @@
 
 
     <Grid Background="#725186">
-        <TextBox Foreground="White" Background="#B796CB" x:Name="tb_plain_text" Margin="10,47,0,144" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="301" FontSize="16"/>
-        <TextBox Foreground="White" Background="#906FA4" x:Name="tb_cipher_text" IsReadOnly="True" Margin="332,47,20,20" FontSize="16"/>
+        <TextBox TextWrapping="Wrap" Foreground="White" Background="#B796CB" x:Name="tb_plain_text" Margin="10,47,0,144" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="301" FontSize="16"/>
+        <TextBox TextWrapping="Wrap" Foreground="White" Background="#906FA4" x:Name="tb_cipher_text" IsReadOnly="True" Margin="332,47,20,20" FontSize="16"/>
         <Grid x:Name="g_control" Margin="10,0,0,20" Background="Cyan" HorizontalAlignment="Left" Width="301" Height="106" VerticalAlignment="Bottom">
             <Border BorderBrush="Green" BorderThickness="1">
             </Border>
             <Grid>
-                <RadioButton x:Name="rb_rus" Content="Rus" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,30,0,0"/>
-                <RadioButton x:Name="rb_eng" Content="Eng" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                <RadioButton x:Name="rb_rus" Content="Rus" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,30,0,0" Checked="rb_rus_Checked"/>
+                <RadioButton x:Name="rb_eng" Content="Eng" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Checked="rb_eng_Checked"/>
             </Grid>
             <Grid>
-                <RadioButton x:Name="rb_vigenere" Content="Vigenere" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10"/>
-                <RadioButton x:Name="rb_atbash" Content="Atbash" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,30"/>
+                <RadioButton x:Name="rb_vigenere" Content="Vigenere" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Checked="rb_vigenere_Checked" />
+                <RadioButton x:Name="rb_atbash" Content="Atbash" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,30" Checked="rb_atbash_Checked"/>
             </Grid>
             <Grid>
-                <RadioButton x:Name="rb_encode" Content="Encode" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,10,0,0"/>
-                <RadioButton x:Name="rb_decode" Content="Decode" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,30,0,0"/>
+                <RadioButton x:Name="rb_encode" Content="Encode" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,10,0,0" Checked="rb_encode_Checked" />
+                <RadioButton x:Name="rb_decode" Content="Decode" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,30,0,0" Checked="rb_decode_Checked"/>
             </Grid>
-            <TextBox x:Name="tb_key" TextWrapping="Wrap" Text="Key" Margin="0,10,10,0" HorizontalAlignment="Right" Width="120" FontSize="16" Height="30" VerticalAlignment="Top"/>
-            <Button Content="Применить" Margin="0,0,10,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" Click="ApplyButton_Click"/>
+            <TextBox x:Name="tb_key" TextWrapping="Wrap" Text="Key" Margin="0,10,10,0" HorizontalAlignment="Right" Width="120" FontSize="16" Height="30" VerticalAlignment="Top" TextChanged="tb_key_TextChanged"/>
         </Grid>
         <Label Foreground="White" Content="Исходный текст" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Height="28"/>
         <Label Foreground="White" Content="Обработанный" HorizontalAlignment="Left" Margin="332,19,0,0" VerticalAlignment="Top" Height="28" Width="114"/>
