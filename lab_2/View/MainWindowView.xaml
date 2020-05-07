@@ -34,8 +34,9 @@
         <Menu Background="White" Margin="0,0,0,0" Height="20" VerticalAlignment="Top" VerticalContentAlignment="Bottom">
             <MenuItem Header="Файл">
                 <MenuItem Header="Сохранить">
-                    <MenuItem Header="Обработаный текст" Click="WriteSourceTextClick"/>
-                    <MenuItem Header="Обработаный и исходный текст" Click="WriteSourceAndCiphertextTextClick"/>
+                    <MenuItem Header="Исходный текст" Click="WriteSourceTextClick"/>
+                    <MenuItem Header="Обработаный текст" Click="WriteCipherTextClick"/>
+                    <MenuItem Header="Обработаный и исходный текст" Click="WriteSourceAndCipherTextClick"/>
                 </MenuItem>
                 <MenuItem Header="Загрузить" Click="ReadFileClick"/>
             </MenuItem>

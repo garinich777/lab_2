@@ -12,6 +12,8 @@ namespace lab_2
     {
         CryptVM VM = new CryptVM();
 
+        enum WriteSettings { SourceAndCipher, Source, Cipher }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -74,7 +76,7 @@ namespace lab_2
             }
         }
 
-        private void WriteText(bool full_write)
+        private void WriteText(WriteSettings write_settings)
         {
             string file_path = string.Empty;
             string file_name = string.Empty;
@@ -94,24 +96,31 @@ namespace lab_2
                     if (!string.IsNullOrEmpty(file_path = saveFileDialog1.FileName))
                     {
                         file_name = Path.GetFileName(file_path);
-                        if(full_write)
+                        if(write_settings == WriteSettings.SourceAndCipher)
                             VM.WriteFile(file_path, tb_cipher_text.Text, tb_plain_text.Text);
-                        else
+                        else if (write_settings == WriteSettings.Cipher)
                             VM.WriteFile(file_path, tb_cipher_text.Text);
+                        else
+                            VM.WriteFile(file_path, string.Empty, tb_plain_text.Text);
                         MessageBox.Show($"Файл \"{file_name}\" успешно записан", file_name);
                     }
                 }
             }
         }
 
-        private void WriteSourceAndCiphertextTextClick(object sender, RoutedEventArgs e)
+        private void WriteSourceAndCipherTextClick(object sender, RoutedEventArgs e)
         {
-            WriteText(true);
+            WriteText(WriteSettings.SourceAndCipher);
         }
 
         private void WriteSourceTextClick(object sender, RoutedEventArgs e)
         {
-            WriteText(false);
+            WriteText(WriteSettings.Source);
+        }
+
+        private void WriteCipherTextClick(object sender, RoutedEventArgs e)
+        {
+            WriteText(WriteSettings.Cipher);
         }
 
         private void HelloMessageShow(object sender, RoutedEventArgs e)
