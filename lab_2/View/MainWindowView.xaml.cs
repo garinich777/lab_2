@@ -1,8 +1,6 @@
 ﻿using lab_2.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Shapes;
-using System.IO;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Path = System.IO.Path;
